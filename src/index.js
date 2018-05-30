@@ -8,7 +8,7 @@ import ModuleList from "./containers/ModuleList"
 
 ReactDOM.render(
     <div className="container-fluid">
-        <ModuleList/>
+        {/*<ModuleList/>*/}
         <CourseManager/>
     </div>,
     document.getElementById('root')
