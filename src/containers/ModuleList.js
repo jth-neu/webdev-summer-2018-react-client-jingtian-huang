@@ -36,6 +36,9 @@ export default class ModuleList
 
     createModule() {
         console.log(this.state.module);
+        this.moduleService
+            .createModule(this.props.courseId, this.state.module)
+            .then(() => {this.findAllModulesForCourse(this.props.courseId)})
     }
 
     titleChanged(event) {
