@@ -1,9 +1,20 @@
 import React from 'react';
 import CourseRow from './CourseRow';
+import CourseService from '../services/CourseService';
 
 class CourseList extends React.Component {
     constructor() {
         super();
+        this.courseService = CourseService.instance;
+        this.state = {courses: []};
+    }
+
+    componentDidMount() {
+        this.courseService.findAllCourses()
+            .then((courses) => {
+                console.log(courses);
+                this.setState({courses: courses});
+            });
     }
     render() {
         return (
