@@ -1,4 +1,5 @@
 import React from 'react';
+import CourseList from './CourseList';
 import CourseCard from '../components/CourseCard';
 import ModuleList from './ModuleList';
 import LessonTabs from './LessonTabs';
@@ -10,10 +11,7 @@ export default class CourseManager
         return (
             <div className="container-fluid">
                 <h1>Course Manager</h1>
-                <CourseEditor/>
-                <LessonTabs/>
-                <ModuleList/>
-                <CourseCard/>
+                <CourseList/>
             </div>
         )
     }
