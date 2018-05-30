@@ -42,6 +42,7 @@ export default class ModuleList
             <br/>
             <input className="form-control"
                    onChange={this.titleChanged}
+                   value={this.state.module.title}
                    placeholder="title"/>
             <button onClick={this.createModule} className="btn btn-primary btn-block">
                 <i className="fa fa-plus"></i>
