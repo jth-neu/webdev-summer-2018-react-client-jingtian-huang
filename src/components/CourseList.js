@@ -1,4 +1,6 @@
 import React from 'react';
+import CourseRow from './CourseRow';
+
 class CourseList extends React.Component {
     constructor() {
         super();
@@ -9,7 +11,11 @@ class CourseList extends React.Component {
                 <h2>Course List</h2>
                 <table>
                     <thead><tr><th>Title</th></tr></thead>
-                    <tbody><tr><td>Course Row</td></tr></tbody>
+                    <tbody>
+                    <CourseRow/>
+                    <CourseRow/>
+                    <CourseRow/>
+                    </tbody>
                 </table>
             </div>
         )
