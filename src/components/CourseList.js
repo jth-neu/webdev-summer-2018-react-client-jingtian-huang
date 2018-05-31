@@ -59,7 +59,7 @@ class CourseList extends React.Component {
                                        placeholder="New Course Title"/></th>
                             <th><button onClick={this.createCourse} className='btn btn-primary'>Add</button></th>
                         </tr>
-                        <tr><th>Title</th><th></th><th>Owned By</th><th>Last Modified</th><th></th></tr>
+                        <tr><th>Title</th><th>Owned By</th><th>Last Modified</th><th></th></tr>
                     </thead>
                     <tbody>
                         {this.renderCourseRows()}
