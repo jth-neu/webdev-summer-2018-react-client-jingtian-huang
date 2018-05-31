@@ -32,5 +32,11 @@ class CourseService {
             return response.json();
         })
     }
+
+    deleteCourse(courseId) {
+        return fetch(COURSE_API_URL + '/' + courseId, {
+            method:'delete'
+        });
+    }
 }
 export default CourseService;
