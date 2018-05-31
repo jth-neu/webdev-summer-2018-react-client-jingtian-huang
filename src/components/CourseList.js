@@ -1,11 +1,11 @@
 import React from 'react';
 import CourseRow from './CourseRow';
-import CourseService from '../services/CourseService';
+import CourseServiceClient from '../services/CourseServiceClient';
 
 class CourseList extends React.Component {
     constructor() {
         super();
-        this.courseService = CourseService.instance;
+        this.courseService = CourseServiceClient.instance;
         this.state = {
             course: { title: "New Course"},
             courses: []
@@ -50,8 +50,6 @@ class CourseList extends React.Component {
     }
 
     deleteCourse(event,courseId) {
-        console.log(event);
-        console.log("CourseId :" + courseId);
         this.courseService
             .deleteCourse(courseId)
             .then(()=> {this.findAllCourses();});
