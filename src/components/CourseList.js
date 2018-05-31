@@ -55,9 +55,11 @@ class CourseList extends React.Component {
                 <table className='table'>
                     <thead>
                         <tr>
-                            <th colSpan={4}><input onChange={this.titleChanged} id="titleFld" className="form-control"
+                            <th colSpan={3}><input onChange={this.titleChanged} id="titleFld" className="form-control"
                                        placeholder="New Course Title"/></th>
-                            <th><button onClick={this.createCourse} className='btn btn-primary'>Add</button></th>
+                            <th><button onClick={this.createCourse} className='btn btn-primary'>
+                                <span className="fa fa-plus"></span>
+                            </button></th>
                         </tr>
                         <tr><th>Title</th><th>Owned By</th><th>Last Modified</th><th></th></tr>
                     </thead>

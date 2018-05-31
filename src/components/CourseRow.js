@@ -21,7 +21,9 @@ class CourseRow extends React.Component {
                         {this.timeDisplay(this.props.course.modified)}
                     </td>
                     <td>
-
+                        <button type="button" className="btn btn-danger">
+                            <span className="fa fa-times"></span>
+                        </button>
                     </td>
                 </tr>
         )
