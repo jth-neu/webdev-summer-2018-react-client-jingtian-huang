@@ -6,7 +6,10 @@ class CourseList extends React.Component {
     constructor() {
         super();
         this.courseService = CourseService.instance;
-        this.state = {courses: []};
+        this.state = {
+            course: { title: "New Course"},
+            courses: []
+        };
         this.titleChanged = this.titleChanged.bind(this);
         this.createCourse = this.createCourse.bind(this);
     }
@@ -51,12 +54,12 @@ class CourseList extends React.Component {
                 <h2>Course List</h2>
                 <table className='table'>
                     <thead>
-                        <tr><th>Title</th></tr>
                         <tr>
                             <th><input onChange={this.titleChanged} id="titleFld" className="form-control"
-                                       placeholder="cs101"/></th>
+                                       placeholder="New Course Title"/></th>
                             <th><button onClick={this.createCourse} className='btn btn-primary'>Add</button></th>
                         </tr>
+                        <tr><th>Title</th></tr>
                     </thead>
                     <tbody>
                         {this.renderCourseRows()}
