@@ -9,7 +9,16 @@ export default class LessonTabItem
         render() {
             return (
                 <li className="nav-item">
-                    <a className="nav-link active" href="#">{this.props.lesson.title}</a>
+                    <div>
+                        <a className="nav-link active" href="#">{this.props.lesson.title}
+                            <span className="float-right">
+                                <button type="button" className="btn btn-sm"
+                                        onClick={(event,lessonId = this.props.lesson.id)=>this.props.remove(event,lessonId)}>
+                                        <i className="fa fa-times"></i>
+                                </button>
+                            </span>
+                        </a>
+                    </div>
                 </li>
             )
         }
