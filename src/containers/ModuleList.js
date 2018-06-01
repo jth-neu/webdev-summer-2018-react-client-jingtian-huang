@@ -30,14 +30,12 @@ export default class ModuleList
     }
 
     createModule() {
-        console.log(this.state.module);
         this.moduleService
             .createModule(this.props.courseId, this.state.module)
             .then(() => {this.findAllModulesForCourse(this.props.courseId)})
     }
 
     titleChanged(event) {
-        console.log(event.target.value);
         this.setState({module: {title: event.target.value}})
     }
 
@@ -85,8 +83,11 @@ export default class ModuleList
     }
 
     deleteModule(event,moduleId) {
-        this.moduleService
-            .deleteModule(moduleId)
-            .then(()=>this.findAllModulesForCourse(this.state.courseId));
+        const confirmation = window.confirm("Are you sure to delete this module?");
+        if(confirmation) {
+            this.moduleService
+                .deleteModule(moduleId)
+                .then(()=>this.findAllModulesForCourse(this.state.courseId));
+        }
     }
 }
