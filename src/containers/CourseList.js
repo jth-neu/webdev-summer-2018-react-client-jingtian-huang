@@ -1,5 +1,5 @@
 import React from 'react';
-import CourseRow from './CourseRow';
+import CourseRow from '../components/CourseRow';
 import CourseServiceClient from '../services/CourseServiceClient';
 
 class CourseList extends React.Component {

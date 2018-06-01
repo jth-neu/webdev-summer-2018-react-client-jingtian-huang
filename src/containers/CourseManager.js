@@ -1,5 +1,5 @@
 import React from 'react';
-import CourseList from '../components/CourseList';
+import CourseList from './CourseList';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import CourseCard from '../components/CourseCard';
 import ModuleList from './ModuleList';
