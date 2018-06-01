@@ -7,7 +7,8 @@ export default class ModuleListItem
     }
     render() {
         return (
-            <li className="list-group-item">
+            <li className="list-group-item"
+                onClick={(event,moduleId = this.props.module.id)=>this.props.setModule(event,moduleId)}>
                 {this.props.title}
                 <span className="float-right">
                     <button type="button" className="btn btn-danger"

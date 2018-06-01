@@ -7,7 +7,10 @@ export default class CourseEditor extends React.Component {
     constructor(props) {
         super(props);
         this.selectCourse = this.selectCourse.bind(this);
-        this.state = {courseId: ''};
+        this.state = {
+            courseId: '',
+            moduleId: ''
+        };
     }
 
     componentDidMount() {
@@ -21,17 +24,19 @@ export default class CourseEditor extends React.Component {
         this.setState({courseId: courseId});
     }
 
+    setModule(event,moduleId) {
+        this.setState({moduleId: moduleId});
+    }
 
     render() {
         return (
             <div>
-                <h2>Editing Course : {this.state.courseId}</h2>
                 <div className="row">
                     <div className="col-4">
-                        <ModuleList courseId={this.state.courseId}/>
+                        <ModuleList courseId={this.state.courseId} setModule={this.setModule.bind(this)}/>
                     </div>
                     <div className="col-8">
-                        <LessonTabs/>
+                        <LessonTabs courseId={this.state.courseId} moduleId={this.state.moduleId}/>
                     </div>
                 </div>
             </div>

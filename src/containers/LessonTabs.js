@@ -8,8 +8,8 @@ export default class LessonTabs
     constructor(props) {
         super(props);
         this.state = {
-            courseId : '2',
-            moduleId : '2',
+            courseId : '',
+            moduleId : '',
             lesson : {title: 'New Lesson'},
             lessons : []
         };
@@ -31,9 +31,9 @@ export default class LessonTabs
     }
 
     findAllLessonsForModule(courseId,moduleId) {
-        this.lessonService
-            .findAllLessonsForModule(courseId,moduleId)
-            .then((lessons) => {this.setLessons(lessons)});
+            this.lessonService
+                .findAllLessonsForModule(courseId,moduleId)
+                .then((lessons) => {this.setLessons(lessons)});
     }
 
     setLessons(lessons) {
@@ -48,7 +48,11 @@ export default class LessonTabs
         this.setState({moduleId: moduleId});
     }
 
-    componentDidMount() {
-        this.findAllLessonsForModule(this.state.courseId,this.state.moduleId)
+    componentWillReceiveProps(newProps){
+        if(newProps.moduleId) {
+            this.setCourseId(newProps.courseId);
+            this.setModuleId(newProps.moduleId);
+            this.findAllLessonsForModule(newProps.courseId,newProps.moduleId);
+        }
     }
 }

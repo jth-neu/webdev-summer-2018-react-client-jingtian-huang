@@ -59,7 +59,8 @@ export default class ModuleList
                 return <ModuleListItem
                     title={module.title} key={module.id}
                     module={module}
-                    remove={this.deleteModule.bind(this)}/>
+                    remove={this.deleteModule.bind(this)}
+                    setModule={this.props.setModule}/>
             }, this);
         return modules;
     }
