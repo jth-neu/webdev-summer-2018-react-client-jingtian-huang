@@ -9,7 +9,7 @@ export default class ModuleList
         super(props);
         this.state = {
             courseId : '',
-            module: {title:'New Module'},
+            module: {title:''},
             modules: []
         };
 
@@ -30,8 +30,14 @@ export default class ModuleList
     }
 
     createModule() {
+        let module ;
+        if(this.state.module.title==''){
+            module = {title:"New Module"};
+        } else{
+            module = this.state.module;
+        }
         this.moduleService
-            .createModule(this.props.courseId, this.state.module)
+            .createModule(this.props.courseId, module)
             .then(() => {this.findAllModulesForCourse(this.props.courseId)})
     }
 
@@ -71,7 +77,7 @@ export default class ModuleList
             <input className="form-control"
                    onChange={this.titleChanged}
                    value={this.state.module.title}
-                   placeholder="title"/>
+                   placeholder="New Module Title"/>
             <button onClick={this.createModule} className="btn btn-primary btn-block">
                 <i className="fa fa-plus"></i>
             </button>
