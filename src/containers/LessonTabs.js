@@ -10,12 +10,12 @@ export default class LessonTabs
         this.state = {
             courseId : '',
             moduleId : '',
-            lesson : {title: 'New Lesson'},
+            lesson : {title: ''},
             lessons : []
         };
 
         this.titleChanged = this.titleChanged.bind(this);
-
+        this.createLesson = this.createLesson.bind(this);
         this.lessonService = LessonServiceClient.instance;
     }
     render() { return(
@@ -27,8 +27,9 @@ export default class LessonTabs
             </div>
             <div className="col-4">
                 <div className="input-group mb-3">
-                    <input onChange={this.titleChanged}  placeholder="Enter the lesson title" type="text"
-                           className="form-control" aria-describedby="basic-addon2"/>
+                    <input onChange={this.titleChanged} value={this.state.lesson.title}
+                           placeholder="Enter New Lesson Title" type="text"
+                           className="form-control"/>
                     <div className="input-group-append">
                         <button onClick={this.createLesson} className="btn btn-primary btn-block">
                             <i className="fa fa-plus "></i>
@@ -74,6 +75,19 @@ export default class LessonTabs
     }
 
     titleChanged(event) {
-        this.setState({module: {title: event.target.value}})
+        console.log(event.target.value);
+        this.setState({lesson: {title: event.target.value}})
+    }
+
+    createLesson() {
+        let lesson ;
+        if(this.state.lesson.title==''){
+            lesson= {title:"New Lesson"};
+        } else{
+            lesson = this.state.lesson;
+        }
+        this.lessonService
+            .createLesson(this.state.courseId,this.state.moduleId,lesson)
+            .then(()=>this.findAllLessonsForModule(this.state.courseId,this.state.moduleId));
     }
 }
