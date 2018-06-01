@@ -1,5 +1,7 @@
-const MODULE_API_URL =
+const COURSE_MODULE_API_URL =
     'http://localhost:8080/api/course/CID/module';
+const MODULE_API_URL =
+    'http://localhost:8080/api/module';
 
 let _singleton = Symbol();
 export default class ModuleServiceClient {
@@ -10,7 +12,7 @@ export default class ModuleServiceClient {
 
     findAllModulesForCourse(courseId) {
         return fetch(
-            MODULE_API_URL
+            COURSE_MODULE_API_URL
                 .replace('CID', courseId))
             .then(function (response) {
                 return response.json();
@@ -18,13 +20,19 @@ export default class ModuleServiceClient {
     }
 
     createModule(courseId, module) {
-        return fetch(MODULE_API_URL.replace('CID', courseId),
+        return fetch(COURSE_MODULE_API_URL.replace('CID', courseId),
             {
                 body: JSON.stringify(module),
                 headers: { 'Content-Type': 'application/json' },
                 method: 'POST'
             }).then(function (response)
         { return response.json(); })
+    }
+
+    deleteModule(moduleId) {
+        return fetch(MODULE_API_URL + '/' + moduleId, {
+            method:'delete'
+        });
     }
 
     static get instance() {

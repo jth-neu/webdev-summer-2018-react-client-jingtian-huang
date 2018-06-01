@@ -10,7 +10,10 @@ export default class ModuleListItem
             <li className="list-group-item">
                 {this.props.title}
                 <span className="float-right">
-                    <i className="fa fa-times"></i>
+                    <button type="button" className="btn btn-danger"
+                            onClick={(event,moduleId = this.props.module.id)=>this.props.remove(event,moduleId)}>
+                            <i className="fa fa-times"></i>
+                    </button>
                 </span>
             </li>
         );

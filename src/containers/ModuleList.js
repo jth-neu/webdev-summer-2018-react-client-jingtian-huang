@@ -59,8 +59,10 @@ export default class ModuleList
         let modules = this.state.modules
             .map(function(module){
                 return <ModuleListItem
-                    title={module.title} key={module.id}/>
-            });
+                    title={module.title} key={module.id}
+                    module={module}
+                    remove={this.deleteModule.bind(this)}/>
+            }, this);
         return modules;
     }
 
@@ -80,5 +82,11 @@ export default class ModuleList
             </ul>
         </div>
     )
+    }
+
+    deleteModule(event,moduleId) {
+        this.moduleService
+            .deleteModule(moduleId)
+            .then(()=>this.findAllModulesForCourse(this.state.courseId));
     }
 }
