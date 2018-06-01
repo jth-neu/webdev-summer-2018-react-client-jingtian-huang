@@ -14,12 +14,29 @@ export default class LessonTabs
             lessons : []
         };
 
+        this.titleChanged = this.titleChanged.bind(this);
+
         this.lessonService = LessonServiceClient.instance;
     }
     render() { return(
-        <ul className="nav nav-tabs">
-            {this.renderListOfLessons()}
-        </ul>
+        <div className="row">
+            <div className="col-8">
+                <ul className="nav nav-tabs">
+                    {this.renderListOfLessons()}
+                </ul>
+            </div>
+            <div className="col-4">
+                <div className="input-group mb-3">
+                    <input onChange={this.titleChanged}  placeholder="Enter the lesson title" type="text"
+                           className="form-control" aria-describedby="basic-addon2"/>
+                    <div className="input-group-append">
+                        <button onClick={this.createLesson} className="btn btn-primary btn-block">
+                            <i className="fa fa-plus "></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     );}
 
     renderListOfLessons() {
@@ -54,5 +71,9 @@ export default class LessonTabs
             this.setModuleId(newProps.moduleId);
             this.findAllLessonsForModule(newProps.courseId,newProps.moduleId);
         }
+    }
+
+    titleChanged(event) {
+        this.setState({module: {title: event.target.value}})
     }
 }
