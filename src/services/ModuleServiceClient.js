@@ -35,9 +35,17 @@ export default class ModuleServiceClient {
         });
     }
 
+    findAllModules() {
+        return fetch(MODULE_API_URL)
+            .then(function(response){
+                return response.json();
+            });
+    }
+
     static get instance() {
         if(!this[_singleton])
             this[_singleton] = new ModuleServiceClient(_singleton);
         return this[_singleton]
     }
+
 }
