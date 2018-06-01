@@ -1,5 +1,6 @@
 import React from 'react';
 import LessonTabItem from '../components/LessonTabItem';
+import LessonServiceClient from '../services/LessonServiceClient';
 
 export default class LessonTabs
     extends React.Component {
@@ -7,16 +8,13 @@ export default class LessonTabs
     constructor(props) {
         super(props);
         this.state = {
-            courseId : '',
-            moduleId : '',
+            courseId : '2',
+            moduleId : '2',
             lesson : {title: 'New Lesson'},
-            lessons : [
-                {title: 'Lesson 1', id: 123},
-                {title: 'Lesson 2', id: 234},
-                {title: 'Lesson 3', id: 345},
-                {title: 'Lesson 4', id: 456}
-            ]
+            lessons : []
         };
+
+        this.lessonService = LessonServiceClient.instance;
     }
     render() { return(
         <ul className="nav nav-tabs">
@@ -30,5 +28,27 @@ export default class LessonTabs
             <LessonTabItem title={lesson.title} key={lesson.id}
                            lesson={lesson}/>)
         return lessons;
+    }
+
+    findAllLessonsForModule(courseId,moduleId) {
+        this.lessonService
+            .findAllLessonsForModule(courseId,moduleId)
+            .then((lessons) => {this.setLessons(lessons)});
+    }
+
+    setLessons(lessons) {
+        this.setState({lessons:lessons});
+    }
+
+    setCourseId(courseId) {
+        this.setState({courseId: courseId});
+    }
+
+    setModuleId(moduleId) {
+        this.setState({moduleId: moduleId});
+    }
+
+    componentDidMount() {
+        this.findAllLessonsForModule(this.state.courseId,this.state.moduleId)
     }
 }

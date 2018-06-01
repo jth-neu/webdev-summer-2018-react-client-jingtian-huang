@@ -24,7 +24,7 @@ class LessonServiceClient {
             });
     }
 
-    findAllLessonssForModule(courseId,moduleId) {
+    findAllLessonsForModule(courseId,moduleId) {
         return fetch(
             MODULE_LESSON_API_URL
                 .replace('CID', courseId)
