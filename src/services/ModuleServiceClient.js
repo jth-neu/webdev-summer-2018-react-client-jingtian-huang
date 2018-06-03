@@ -1,7 +1,7 @@
 const COURSE_MODULE_API_URL =
-    'http://localhost:8080/api/course/CID/module';
+    'https://webdev-summer2018-jthuang.herokuapp.com/api/course/CID/module';
 const MODULE_API_URL =
-    'http://localhost:8080/api/module';
+    'https://webdev-summer2018-jthuang.herokuapp.com/api/module';
 
 let _singleton = Symbol();
 export default class ModuleServiceClient {

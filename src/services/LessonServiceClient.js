@@ -1,9 +1,9 @@
 let _singleton = Symbol();
 
 const LESSON_API_URL =
-    'http://localhost:8080/api/lesson';
+    'https://webdev-summer2018-jthuang.herokuapp.com/api/lesson';
 const MODULE_LESSON_API_URL =
-    'http://localhost:8080/api/course/CID/module/MID/lesson';
+    'https://webdev-summer2018-jthuang.herokuapp.com/api/course/CID/module/MID/lesson';
 
 
 class LessonServiceClient {
