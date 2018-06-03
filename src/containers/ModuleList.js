@@ -10,7 +10,8 @@ export default class ModuleList
         this.state = {
             courseId : '',
             module: {title:''},
-            modules: []
+            modules: [],
+            selectedItem: null
         };
 
         this.titleChanged = this.titleChanged.bind(this);
@@ -61,14 +62,21 @@ export default class ModuleList
 
     renderListOfModules() {
         let modules = this.state.modules
-            .map(function(module){
+            .map(function(module, idx){
+                var is_selected = this.state.selectedItem == idx;
                 return <ModuleListItem
                     title={module.title} key={module.id}
                     module={module}
                     remove={this.deleteModule.bind(this)}
-                    setModule={this.props.setModule}/>
+                    setModule={this.props.setModule}
+                    onClick={this.clickHandler.bind(this, idx)}
+                    isSelected={is_selected}/>
             }, this);
         return modules;
+    }
+
+    clickHandler(idx) {
+        this.setState({selectedItem: idx});
     }
 
     render() { return (
