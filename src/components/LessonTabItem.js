@@ -7,15 +7,21 @@ export default class LessonTabItem
         }
 
         render() {
+            var liStyle = {
+                background: '#eee'
+            };
+            if (this.props.isSelected) {
+                liStyle['background'] = '#ff7f7f';
+            }
             return (
-                <li className="nav-item">
+                <li className="nav-item"
+                    onClick={(event)=>this.props.onClick(event)}>
                     <div>
-                        <a className="nav-link active" href="#">{this.props.lesson.title}
+                        <a className="nav-link active" href="#" style={liStyle}>{this.props.lesson.title}
                             <span className="float-right">
-                                <button type="button" className="btn btn-sm"
-                                        onClick={(event,lessonId = this.props.lesson.id)=>this.props.remove(event,lessonId)}>
-                                        <i className="fa fa-times"></i>
-                                </button>
+                                &nbsp;
+                                <i className="fa fa-times"
+                                   onClick={(event,lessonId = this.props.lesson.id)=>this.props.remove(event,lessonId)}></i>
                             </span>
                         </a>
                     </div>

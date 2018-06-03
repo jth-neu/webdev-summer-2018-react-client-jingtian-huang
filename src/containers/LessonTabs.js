@@ -12,7 +12,8 @@ export default class LessonTabs
             moduleId : '',
             lesson : {title: ''},
             lessons : [],
-            lessonId : ''
+            lessonId : '',
+            selectedItem: null
         };
 
         this.titleChanged = this.titleChanged.bind(this);
@@ -44,10 +45,21 @@ export default class LessonTabs
 
     renderListOfLessons() {
         let lessons = this.state.lessons
-            .map(lesson =>
-            <LessonTabItem title={lesson.title} key={lesson.id}
-                           lesson={lesson} remove={this.deleteLesson.bind(this)}/>)
+            .map(function(lesson, idx){
+             var is_selected = this.state.selectedItem == idx;
+             return (<LessonTabItem title={lesson.title}
+                           key={lesson.id}
+                           lesson={lesson}
+                           remove={this.deleteLesson.bind(this)}
+                           onClick={this.clickHandler.bind(this, idx)}
+                           isSelected={is_selected}/>)},
+                 this)
+
         return lessons;
+    }
+
+    clickHandler(idx) {
+        this.setState({selectedItem: idx});
     }
 
     findAllLessonsForModule(courseId,moduleId) {
