@@ -1,5 +1,11 @@
-export const widgetReducer = (state= initialState, action) => {
+import * as constants from "../constants/index"
+
+export const widgetReducer = (state= {widgets: []}, action) => {
     switch (action.type) {
+        case constants.FIND_ALL_WIDGETS :
+            return {
+                widgets: action.widgets
+            }
         case 'ADD_WIDGET' :
             return {
                 widgets : [

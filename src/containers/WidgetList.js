@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import WidgetContainer from '../components/Widget'
+import {findAllWidgets} from "../actions";
 
 class WidgetList extends Component {
     constructor(props) {
         super(props)
+        this.props.findAllWidgets()
     }
     render() {
         return(
@@ -28,7 +30,11 @@ const stateToPropertiesMapper = (state) => ({
     widgets: state.widgets,
 })
 
+const dispatchToPropsMapper = dispatch => ({
+    findAllWidgets : () => findAllWidgets(dispatch)
+})
+
 const WidgetListContainer = connect(
-    stateToPropertiesMapper)(WidgetList)
+    stateToPropertiesMapper,dispatchToPropsMapper)(WidgetList)
 
 export default WidgetListContainer;
