@@ -1,5 +1,5 @@
 import React from "react";
-import Widget from "./Widget"
+import WidgetList from "../containers/WidgetList"
 
 export default class LessonTabItem
     extends React.Component {
@@ -27,7 +27,8 @@ export default class LessonTabItem
                         </a>
                     </div>
                     <div hidden={!this.props.isSelected}>
-                        <Widget/>
+                        <WidgetList widgets=
+                                        {[{text: 'Heading'}, {text: 'List'}]}/>
                     </div>
                 </li>
             )
