@@ -1,8 +1,9 @@
 import React from "react";
-
-const Widget
-    = () => (
-    <li> Widget </li>
+import {connect} from 'react-redux'
+const Widget = ({widget}) => (
+    <li> {widget.text} </li>
 )
 
-export default Widget;
+const WidgetContainer = connect()(Widget)
+
+export default WidgetContainer;
