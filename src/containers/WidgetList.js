@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import WidgetContainer from '../components/Widget'
-import {findAllWidgets} from "../actions";
+import * as actions from "../actions";
 
 class WidgetList extends Component {
     constructor(props) {
@@ -18,9 +18,7 @@ class WidgetList extends Component {
                                          key={widget.id}/>
                     ))}
                 </ul>
-                <button onClick={e => (
-                    this.props.dispatch({type: 'ADD_WIDGET'})
-                )}>Add Widget</button>
+                <button onClick={this.props.addWidget}>Add Widget</button>
             </div>
         )
     }
@@ -31,7 +29,8 @@ const stateToPropertiesMapper = (state) => ({
 })
 
 const dispatchToPropsMapper = dispatch => ({
-    findAllWidgets : () => findAllWidgets(dispatch)
+    findAllWidgets : () => actions.findAllWidgets(dispatch),
+    addWidget: () => actions.addWidget(dispatch)
 })
 
 const WidgetListContainer = connect(

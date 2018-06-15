@@ -6,4 +6,8 @@ export const findAllWidgets = dispatch => {
         .then(widgets => dispatch({
             type: constants.FIND_ALL_WIDGETS,
             widgets: widgets }))
-}
+};
+
+export const addWidget = dispatch => (
+    dispatch({type: constants.ADD_WIDGET})
+);
