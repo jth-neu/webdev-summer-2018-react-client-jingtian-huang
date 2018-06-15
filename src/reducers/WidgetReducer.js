@@ -4,9 +4,14 @@ export const widgetReducer = (state= initialState, action) => {
             return {
                 widgets : [
                     ...state.widgets,
-                    {id: idAutoIncrement + 1, text: 'New Widget'}
+                    {id: idAutoIncrement++, text: 'New Widget'}
                 ]
             };
+        case 'DELETE_WIDGET' :
+            return {
+                widgets: state.widgets.filter(widget => (
+                 widget.id !== action.id
+            )) };
         default:
             return state
     }
