@@ -1,4 +1,5 @@
 import React from "react";
+import Widget from "./Widget"
 
 export default class LessonTabItem
     extends React.Component {
@@ -24,6 +25,9 @@ export default class LessonTabItem
                                    onClick={(event,lessonId = this.props.lesson.id)=>this.props.remove(event,lessonId)}></i>
                             </span>
                         </a>
+                    </div>
+                    <div hidden={!this.props.isSelected}>
+                        <Widget/>
                     </div>
                 </li>
             )
