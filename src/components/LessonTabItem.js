@@ -1,5 +1,4 @@
 import React from "react";
-import WidgetList from "../containers/WidgetList"
 
 export default class LessonTabItem
     extends React.Component {
@@ -25,10 +24,6 @@ export default class LessonTabItem
                                    onClick={(event,lessonId = this.props.lesson.id)=>this.props.remove(event,lessonId)}></i>
                             </span>
                         </a>
-                    </div>
-                    <div hidden={!this.props.isSelected}>
-                        <WidgetList widgets=
-                                        {[{text: 'Heading'}, {text: 'List'}]}/>
                     </div>
                 </li>
             )

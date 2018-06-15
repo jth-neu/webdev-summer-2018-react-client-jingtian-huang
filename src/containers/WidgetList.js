@@ -21,4 +21,11 @@ class WidgetList extends Component {
     }
 }
 
-export default WidgetList;
+const stateToPropertiesMapper = (state) => ({
+    widgets: state.widgets,
+})
+
+const WidgetListContainer = connect(
+    stateToPropertiesMapper)(WidgetList)
+
+export default WidgetListContainer;

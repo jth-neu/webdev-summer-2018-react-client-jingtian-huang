@@ -1,6 +1,7 @@
 import React from 'react';
 import LessonTabItem from '../components/LessonTabItem';
 import LessonServiceClient from '../services/LessonServiceClient';
+import WidgetListContainer from "../containers/WidgetList"
 
 export default class LessonTabs
     extends React.Component {
@@ -39,7 +40,9 @@ export default class LessonTabs
                     {this.renderListOfLessons()}
                 </ul>
             </div>
-
+            <div>
+                <WidgetListContainer/>
+            </div>
         </div>
     );}
 
