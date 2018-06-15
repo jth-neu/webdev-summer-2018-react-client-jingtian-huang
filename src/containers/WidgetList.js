@@ -16,6 +16,9 @@ class WidgetList extends Component {
                                          key={widget.id}/>
                     ))}
                 </ul>
+                <button onClick={e => (
+                    this.props.dispatch({type: 'ADD_WIDGET'})
+                )}>Add Widget</button>
             </div>
         )
     }

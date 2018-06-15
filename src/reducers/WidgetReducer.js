@@ -1,6 +1,19 @@
-export const widgetReducer = (state, action) => {
-    return initialState;
+export const widgetReducer = (state= initialState, action) => {
+    switch (action.type) {
+        case 'ADD_WIDGET' :
+            return {
+                widgets : [
+                    ...state.widgets,
+                    {id: idAutoIncrement + 1, text: 'New Widget'}
+                ]
+            };
+        default:
+            return state
+    }
+
 };
+
+let idAutoIncrement = 4;
 
 
 let initialState = {
