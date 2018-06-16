@@ -34,14 +34,19 @@ const Widget = ({widget, dispatch}) => {
     )
 };
 
-const Heading = ({headingSizeChanged,widget}) => {
+const Heading = ({headingSizeChanged,headingTextChanged,widget}) => {
     let selectHeadingSize;
+    let headingTextInput;
     return (
         <div>
         <div>
             <h2>Heading {widget.size} </h2>
+            <input onChange={()=> headingTextChanged(widget.id, headingTextInput.value)}
+                   ref={node => headingTextInput = node}
+                   value={widget.text}/>
             <select onChange={()=> headingSizeChanged(widget.id, selectHeadingSize.value)}
-                    ref={node => selectHeadingSize = node}>
+                    ref={node => selectHeadingSize = node}
+                    value={widget.size}>
                 <option value='1'>Heading 1</option>
                 <option value='2'>Heading 2</option>
                 <option value='3'>Heading 3</option>
@@ -56,6 +61,8 @@ const Heading = ({headingSizeChanged,widget}) => {
 }
 
 const dispatchToPropsMapper = dispatch => ({
+    headingTextChanged : (widgetId, newText)=>
+        actions.headingTextChanged(dispatch, widgetId, newText),
     headingSizeChanged : (widgetId, newSize)=>
     actions.headingSizeChanged(dispatch, widgetId, newSize)
 })

@@ -3,6 +3,16 @@ import * as constants from "../constants/index"
 export const widgetReducer = (state= {widgets: []}, action) => {
     switch (action.type) {
 
+        case constants.HEADING_TEXT_CHANGED:
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.text = action.text
+                    }
+                    return Object.assign({}, widget)
+                })
+            };
+
         case constants.HEADING_SIZE_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
@@ -11,7 +21,7 @@ export const widgetReducer = (state= {widgets: []}, action) => {
                     }
                     return Object.assign({}, widget)
                 })
-            }
+            };
 
         case constants.SELECT_WIDGET_TYPE:
             console.log(action);
@@ -22,8 +32,8 @@ export const widgetReducer = (state= {widgets: []}, action) => {
                     }
                     return true;
                 })
-            }
-            return JSON.parse(JSON.stringify(newState))
+            };
+            return JSON.parse(JSON.stringify(newState));
 
         case constants.SAVE:
             fetch('http://localhost:8080/api/widget/save', {
@@ -31,7 +41,7 @@ export const widgetReducer = (state= {widgets: []}, action) => {
                 body: JSON.stringify(state.widgets),
                 headers: {
                     'content-type': 'application/json'}
-            })
+            });
             return state;
 
         case constants.FIND_ALL_WIDGETS :
@@ -44,8 +54,9 @@ export const widgetReducer = (state= {widgets: []}, action) => {
                 widgets : [
                     ...state.widgets,
                     {id: state.widgets.length+1,
-                        text: 'New Widget',
-                    widgetType: 'Paragraph'}
+                    text: 'New Widget',
+                    widgetType: 'Paragraph',
+                    size: '2'}
                 ]
             };
 
