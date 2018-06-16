@@ -1,29 +1,34 @@
 import React from "react";
 import {connect} from 'react-redux'
 import * as actions from "../actions";
+import HeadingContainer from './HeadingWidget'
 
 const Widget = ({widget, dispatch,preview}) => {
     let selectElement;
     return (
         <li>
-            <div hidden={preview}>
-            {widget.text}{widget.widgetType}
-            <select
-                value = {widget.widgetType}
-                onChange={e=> dispatch({
-                    type: 'SELECT_WIDGET_TYPE',
-                    id: widget.id,
-                    widgetType: selectElement.value})}
-                ref={node => selectElement = node }>
-                <option>Heading</option>
-                <option>Paragraph</option>
-                <option>List</option>
-                <option>Link</option>
-                <option>Image</option>
-            </select>
-            <button onClick={e => (
-                dispatch({type: 'DELETE_WIDGET', id: widget.id})
-            )} >Delete</button>
+            <div className='row' hidden={preview}>
+                <div className="col-9">
+                    <h2>{widget.widgetType} Widget</h2>
+                </div>
+                <div className="col-3 float-right">
+                    <select
+                        value = {widget.widgetType}
+                        onChange={e=> dispatch({
+                            type: 'SELECT_WIDGET_TYPE',
+                            id: widget.id,
+                            widgetType: selectElement.value})}
+                        ref={node => selectElement = node }>
+                        <option>Heading</option>
+                        <option>Paragraph</option>
+                        <option>List</option>
+                        <option>Link</option>
+                        <option>Image</option>
+                    </select>
+                    <button onClick={e => (
+                        dispatch({type: 'DELETE_WIDGET', id: widget.id})
+                    )} >Delete</button>
+                </div>
             </div>
             <div>
                 {widget.widgetType==='Heading' &&  <HeadingContainer widget={widget}/>}
@@ -36,43 +41,6 @@ const Widget = ({widget, dispatch,preview}) => {
     )
 };
 
-const Heading = ({preview,headingSizeChanged,headingTextChanged,widget}) => {
-    let selectHeadingSize;
-    let headingTextInput;
-    return (
-        <div>
-            <div hidden={preview}>
-                <h2>Heading {widget.size} </h2>
-                <input onChange={()=> headingTextChanged(widget.id, headingTextInput.value)}
-                       ref={node => headingTextInput = node}
-                       value={widget.text}/>
-                <select onChange={()=> headingSizeChanged(widget.id, selectHeadingSize.value)}
-                        ref={node => selectHeadingSize = node}
-                        value={widget.size}>
-                    <option value='1'>Heading 1</option>
-                    <option value='2'>Heading 2</option>
-                    <option value='3'>Heading 3</option>
-                </select>
-                <h3>Preview</h3>
-            </div>
-            {widget.size == 1 && <h1>{widget.text}</h1>}
-            {widget.size == 2 && <h2>{widget.text}</h2>}
-            {widget.size == 3 && <h3>{widget.text}</h3>}
-        </div>
-    )
-}
-
-const dispatchToPropsMapper = dispatch => ({
-    headingTextChanged : (widgetId, newText)=>
-        actions.headingTextChanged(dispatch, widgetId, newText),
-    headingSizeChanged : (widgetId, newSize)=>
-    actions.headingSizeChanged(dispatch, widgetId, newSize)
-})
-
-const stateToPropsMapper = state => ({
-    preview: state.preview
-})
-const HeadingContainer = connect(stateToPropsMapper,dispatchToPropsMapper)(Heading)
 
 const Paragraph = () => (
     <div>

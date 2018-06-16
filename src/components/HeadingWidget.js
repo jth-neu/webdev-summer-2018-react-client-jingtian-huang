@@ -8,7 +8,6 @@ const Heading = ({preview,headingSizeChanged,headingTextChanged,widget}) => {
     return (
         <div>
             <div hidden={preview}>
-                <h2>Heading {widget.size} </h2>
                 <input onChange={()=> headingTextChanged(widget.id, headingTextInput.value)}
                        ref={node => headingTextInput = node}
                        value={widget.text}/>
