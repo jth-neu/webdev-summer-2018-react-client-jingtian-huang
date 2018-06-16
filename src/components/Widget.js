@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from 'react-redux'
 import HeadingContainer from './HeadingWidget'
 import ParagraphContainer from "./ParagraphWidget";
+import ImageContainer from "./ImageWidget";
 
 const Widget = ({widget, dispatch,preview}) => {
     let selectElement;
@@ -35,7 +36,7 @@ const Widget = ({widget, dispatch,preview}) => {
                 {widget.widgetType==='Paragraph' && <ParagraphContainer widget={widget}/>}
                 {widget.widgetType==='List' && <List/>}
                 {widget.widgetType==='Link' && <Link/>}
-                {widget.widgetType==='Image' && <Image/>}
+                {widget.widgetType==='Image' && <ImageContainer widget={widget}/>}
             </div>
         </li>
     )

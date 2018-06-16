@@ -17,7 +17,17 @@ export const widgetReducer = (state= {widgets: [], preview:false}, action) => {
                     }
                     return Object.assign({}, widget)
                 })
-            }
+            };
+
+        case constants.SRC_CHANGED:
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.src = action.src
+                    }
+                    return Object.assign({}, widget)
+                })
+            };
 
         case constants.TEXT_CHANGED:
             return {
@@ -72,7 +82,8 @@ export const widgetReducer = (state= {widgets: [], preview:false}, action) => {
                     text: '',
                     widgetType: 'Paragraph',
                     size: '2',
-                    name: ''}
+                    name: '',
+                    src: ''}
                 ]
             };
 

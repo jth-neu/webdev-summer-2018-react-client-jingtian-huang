@@ -6,3 +6,4 @@ export const HEADING_SIZE_CHANGED = 'HEADING_SIZE_CHANGED';
 export const TEXT_CHANGED = 'TEXT_CHANGED';
 export const PREVIEW = 'PREVIEW';
 export const NAME_CHANGED = 'NAME_CHANGED';
+export const SRC_CHANGED = 'SRC_CHANGED';

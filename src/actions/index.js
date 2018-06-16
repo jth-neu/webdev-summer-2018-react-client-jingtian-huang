@@ -41,3 +41,10 @@ export const nameChanged = (dispatch, widgetId, newName) => (
         id: widgetId,
         name: newName})
 );
+
+export const srcChanged = (dispatch, widgetId, newSrc) => (
+    dispatch({
+        type: constants.SRC_CHANGED,
+        id: widgetId,
+        src: newSrc})
+);
