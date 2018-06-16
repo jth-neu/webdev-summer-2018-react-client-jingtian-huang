@@ -11,7 +11,8 @@ const Heading = ({preview,nameChanged,headingSizeChanged,textChanged,widget}) =>
             <div hidden={preview}>
                 <input onChange={()=> textChanged(widget.id, inputTextElem.value)}
                        ref={node => inputTextElem = node}
-                       value={widget.text}/>
+                       value={widget.text}
+                       placeholder="Heading Text"/>
                 <select onChange={()=> headingSizeChanged(widget.id, selectHeadingSize.value)}
                         ref={node => selectHeadingSize = node}
                         value={widget.size}>
