@@ -7,6 +7,16 @@ export const widgetReducer = (state= {widgets: [], preview:false}, action) => {
             return {
                 widgets: state.widgets,
                 preview: !state.preview
+            };
+
+        case constants.NAME_CHANGED:
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.name = action.name
+                    }
+                    return Object.assign({}, widget)
+                })
             }
 
         case constants.HEADING_TEXT_CHANGED:
