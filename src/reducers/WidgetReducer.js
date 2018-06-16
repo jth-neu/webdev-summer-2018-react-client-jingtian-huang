@@ -1,7 +1,13 @@
 import * as constants from "../constants/index"
 
-export const widgetReducer = (state= {widgets: []}, action) => {
+export const widgetReducer = (state= {widgets: [], preview:false}, action) => {
     switch (action.type) {
+
+        case constants.PREVIEW:
+            return {
+                widgets: state.widgets,
+                preview: !state.preview
+            }
 
         case constants.HEADING_TEXT_CHANGED:
             return {
@@ -24,7 +30,6 @@ export const widgetReducer = (state= {widgets: []}, action) => {
             };
 
         case constants.SELECT_WIDGET_TYPE:
-            console.log(action);
             let newState = {
                 widgets: state.widgets.filter((widget) => {
                     if(widget.id === action.id) {

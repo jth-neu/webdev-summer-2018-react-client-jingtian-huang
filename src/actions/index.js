@@ -30,3 +30,7 @@ export const headingTextChanged = (dispatch, widgetId, newText) => (
         id: widgetId,
         text: newText})
 );
+
+export const preview = dispatch => (
+    dispatch({type: constants.PREVIEW})
+);
