@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from 'react-redux'
 import HeadingContainer from './HeadingWidget'
+import ParagraphContainer from "./ParagraphWidget";
 
 const Widget = ({widget, dispatch,preview}) => {
     let selectElement;
@@ -31,7 +32,7 @@ const Widget = ({widget, dispatch,preview}) => {
             </div>
             <div>
                 {widget.widgetType==='Heading' &&  <HeadingContainer widget={widget}/>}
-                {widget.widgetType==='Paragraph' && <Paragraph/>}
+                {widget.widgetType==='Paragraph' && <ParagraphContainer widget={widget}/>}
                 {widget.widgetType==='List' && <List/>}
                 {widget.widgetType==='Link' && <Link/>}
                 {widget.widgetType==='Image' && <Image/>}
@@ -40,13 +41,6 @@ const Widget = ({widget, dispatch,preview}) => {
     )
 };
 
-
-const Paragraph = () => (
-    <div>
-        <h2>Paragraph</h2>
-        <textarea></textarea>
-    </div>
-)
 const List = () => (
     <h2>List</h2>
 )
