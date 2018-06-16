@@ -19,7 +19,7 @@ export const widgetReducer = (state= {widgets: [], preview:false}, action) => {
                 })
             }
 
-        case constants.HEADING_TEXT_CHANGED:
+        case constants.TEXT_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
                     if(widget.id === action.id) {

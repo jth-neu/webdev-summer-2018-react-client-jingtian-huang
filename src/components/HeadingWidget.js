@@ -2,15 +2,15 @@ import React from 'react';
 import {connect} from "react-redux";
 import * as actions from "../actions";
 
-const Heading = ({preview,nameChanged,headingSizeChanged,headingTextChanged,widget}) => {
+const Heading = ({preview,nameChanged,headingSizeChanged,textChanged,widget}) => {
     let selectHeadingSize;
-    let headingTextInput;
+    let inputTextElem;
     let inputNameElem;
     return (
         <div>
             <div hidden={preview}>
-                <input onChange={()=> headingTextChanged(widget.id, headingTextInput.value)}
-                       ref={node => headingTextInput = node}
+                <input onChange={()=> textChanged(widget.id, inputTextElem.value)}
+                       ref={node => inputTextElem = node}
                        value={widget.text}/>
                 <select onChange={()=> headingSizeChanged(widget.id, selectHeadingSize.value)}
                         ref={node => selectHeadingSize = node}
@@ -32,8 +32,8 @@ const Heading = ({preview,nameChanged,headingSizeChanged,headingTextChanged,widg
 }
 
 const dispatchToPropsMapper = dispatch => ({
-    headingTextChanged : (widgetId, newText)=>
-        actions.headingTextChanged(dispatch, widgetId, newText),
+    textChanged : (widgetId, newText)=>
+        actions.textChanged(dispatch, widgetId, newText),
     headingSizeChanged : (widgetId, newSize)=>
         actions.headingSizeChanged(dispatch, widgetId, newSize),
     nameChanged: (widgetId, newName) =>
