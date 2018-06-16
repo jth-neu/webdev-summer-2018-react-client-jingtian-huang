@@ -29,6 +29,16 @@ export const widgetReducer = (state= {widgets: [], preview:false}, action) => {
                 })
             };
 
+        case constants.LINK_CHANGED:
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.href = action.href
+                    }
+                    return Object.assign({}, widget)
+                })
+            };
+
         case constants.TEXT_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
@@ -83,7 +93,8 @@ export const widgetReducer = (state= {widgets: [], preview:false}, action) => {
                     widgetType: 'Paragraph',
                     size: '2',
                     name: '',
-                    src: ''}
+                    src: '',
+                    href:''}
                 ]
             };
 

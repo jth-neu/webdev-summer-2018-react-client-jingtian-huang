@@ -48,3 +48,10 @@ export const srcChanged = (dispatch, widgetId, newSrc) => (
         id: widgetId,
         src: newSrc})
 );
+
+export const linkChanged = (dispatch, widgetId, newLink) => (
+    dispatch({
+        type: constants.LINK_CHANGED,
+        id: widgetId,
+        href: newLink})
+);
