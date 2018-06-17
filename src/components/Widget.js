@@ -14,7 +14,8 @@ const Widget = ({widget, dispatch,preview}) => {
                 <div className="col-8">
                     <h2>{widget.widgetType} Widget</h2>
                 </div>
-                <div className="col-4 form-group float-right">
+                <div className="col-4">
+                    <div className="float-right">
                     <select
                         className="form-control-sm"
                         value = {widget.widgetType}
@@ -32,6 +33,7 @@ const Widget = ({widget, dispatch,preview}) => {
                     <button className='btn btn-danger' onClick={e => (
                         dispatch({type: 'DELETE_WIDGET', id: widget.id})
                     )} ><i className="fa fa-times"/></button>
+                    </div>
                 </div>
             </div>
             <div>

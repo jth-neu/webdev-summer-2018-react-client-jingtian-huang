@@ -15,6 +15,8 @@ class WidgetList extends Component {
                     <button className='btn btn-success' hidden={this.props.previewMode} onClick={this.props.save}>Save</button>
                     <button className='btn btn-outline-primary' onClick={this.props.preview}>Preview</button>
                 </div>
+                <br/>
+                <br/>
                 <div>
                     <ul>
                         <div>
