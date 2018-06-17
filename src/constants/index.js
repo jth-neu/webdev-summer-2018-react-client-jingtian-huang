@@ -9,3 +9,4 @@ export const NAME_CHANGED = 'NAME_CHANGED';
 export const SRC_CHANGED = 'SRC_CHANGED';
 export const LINK_CHANGED = 'LINK_CHANGED';
 export const LIST_TYPE_CHANGED = 'LIST_TYPE_CHANGED';
+export const LIST_ITEM_CHANGED = 'LIST_ITEM_CHANGED';
