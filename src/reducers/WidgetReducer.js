@@ -3,6 +3,19 @@ import * as constants from "../constants/index"
 export const widgetReducer = (state= {widgets: [], preview:false}, action) => {
     switch (action.type) {
 
+        case constants.MOVE_WIDGET_UP:
+            console.log(action.widgetOrder)
+            newState = Object.assign({}, state);
+            newState.widgets = moveWidgetUp(action.id, action.widgetOrder, newState.widgets);
+            newState.widgets.sort(orderComparator)
+            return JSON.parse(JSON.stringify(newState));
+
+        case constants.MOVE_WIDGET_DOWN:
+            newState = Object.assign({}, state);
+            newState.widgets = moveWidgetDown(action.id, action.widgetOrder, newState.widgets);
+            newState.widgets.sort(orderComparator)
+            return JSON.parse(JSON.stringify(newState));
+
         case constants.PREVIEW:
             return {
                 widgets: state.widgets,
@@ -116,7 +129,8 @@ export const widgetReducer = (state= {widgets: [], preview:false}, action) => {
                     src: '',
                     href:'',
                     listType:'unordered',
-                    listItem:''}
+                    listItem:'',
+                    widgetOrder: state.widgets.length + 1}
                 ]
             };
 
@@ -130,4 +144,40 @@ export const widgetReducer = (state= {widgets: [], preview:false}, action) => {
             return state
     }
 
+};
+
+const moveWidgetUp = (widgetId, oldOrder, widgets) => {
+    return widgets.map((widget) => {
+            let newWidget = Object.assign({}, widget);
+            if(widget.widgetOrder === oldOrder) {
+                newWidget.widgetOrder = widget.widgetOrder - 1;
+                return newWidget;
+            }
+
+            if(widget.widgetOrder === (oldOrder - 1)) {
+                newWidget.widgetOrder = widget.widgetOrder + 1;
+            }
+            return newWidget;
+        }
+    );
+};
+
+const moveWidgetDown = (widgetId, oldOrder, widgets) => {
+    return widgets.map((widget) => {
+            let newWidget = Object.assign({}, widget);
+            if(widget.widgetOrder === oldOrder) {
+                newWidget.widgetOrder = widget.widgetOrder + 1;
+                return newWidget;
+            }
+
+            if(widget.widgetOrder === (oldOrder + 1)) {
+                newWidget.widgetOrder = widget.widgetOrder - 1;
+            }
+            return newWidget;
+        }
+    );
+};
+
+const orderComparator = (a, b) => {
+    {return (a.widgetOrder > b.widgetOrder) ? 1 : ((b.widgetOrder > a.widgetOrder) ? -1 : 0);}
 };
