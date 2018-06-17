@@ -29,10 +29,28 @@ const List = ({preview,nameChanged,listTypeChanged,textChanged,widget}) => {
                 </div>
                 <h3>Preview</h3>
             </div>
-            {widget.listType === 'UNORDERED_LIST' && <h1>Unordered</h1>}
-            {widget.listType === 'ORDERED_LIST' && <h1>ordered</h1>}
+            {widget.listType === 'UNORDERED_LIST' && <UnorderedListConverter text={widget.text}/>}
+            {widget.listType === 'ORDERED_LIST' && <OrderedListConverter text={widget.text}/>}
         </div>
     )
+};
+
+const OrderedListConverter = ({text}) => {
+    let inputArray = text.split("\n");
+    return (
+        <ol>
+            {inputArray.map(line => ( <li key={inputArray.length++}> {line} </li>))}
+        </ol>
+    );
+};
+
+const UnorderedListConverter = ({text}) => {
+    let inputArray = text.split("\n");
+    return (
+        <ul>
+            {inputArray.map(line => ( <li key={inputArray.length++}> {line} </li>))}
+        </ul>
+    );
 };
 
 const dispatchToPropsMapper = dispatch => ({
