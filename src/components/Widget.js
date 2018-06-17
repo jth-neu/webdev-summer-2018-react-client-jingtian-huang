@@ -11,11 +11,12 @@ const Widget = ({widget, dispatch,preview}) => {
     return (
         <li>
             <div className='row' hidden={preview}>
-                <div className="col-9">
+                <div className="col-8">
                     <h2>{widget.widgetType} Widget</h2>
                 </div>
-                <div className="col-3 float-right">
+                <div className="col-4 form-group float-right">
                     <select
+                        className="form-control-sm"
                         value = {widget.widgetType}
                         onChange={e=> dispatch({
                             type: 'SELECT_WIDGET_TYPE',
@@ -28,9 +29,9 @@ const Widget = ({widget, dispatch,preview}) => {
                         <option>Link</option>
                         <option>Image</option>
                     </select>
-                    <button onClick={e => (
+                    <button className='btn btn-danger' onClick={e => (
                         dispatch({type: 'DELETE_WIDGET', id: widget.id})
-                    )} >Delete</button>
+                    )} ><i className="fa fa-times"/></button>
                 </div>
             </div>
             <div>
@@ -40,6 +41,7 @@ const Widget = ({widget, dispatch,preview}) => {
                 {widget.widgetType==='Link' && <LinkContainer widget={widget}/>}
                 {widget.widgetType==='Image' && <ImageContainer widget={widget}/>}
             </div>
+            <hr></hr>
         </li>
     )
 };

@@ -10,12 +10,12 @@ const Image = ({widget, preview, srcChanged,nameChanged}) => {
         <div>
             <div hidden={preview}>
                 <div>
-                    <input onChange={() => srcChanged(widget.id, inputElem.value)}
+                    <input className="form-control" onChange={() => srcChanged(widget.id, inputElem.value)}
                               value={widget.src}
                               ref={node => inputElem = node} placeholder="Image URL"/>
                 </div>
                 <div>
-                    <input onChange={() => nameChanged(widget.id, inputNameElem.value)}
+                    <input className="form-control" onChange={() => nameChanged(widget.id, inputNameElem.value)}
                            value={widget.name}
                            ref={node => inputNameElem = node} placeholder="Widget Name"/>
                 </div>

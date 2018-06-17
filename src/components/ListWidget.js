@@ -10,12 +10,12 @@ const List = ({preview,nameChanged,listTypeChanged,listItemChanged,widget}) => {
         <div>
             <div hidden={preview}>
                 <div>
-                    <textarea onChange={() => listItemChanged(widget.id, inputElem.value)}
+                    <textarea className="form-control" onChange={() => listItemChanged(widget.id, inputElem.value)}
                               value={widget.listItem}
                               ref={node => inputElem = node} placeholder="Enter one list item per line"/>
                 </div>
                 <div>
-                    <select onChange={()=> listTypeChanged(widget.id, listType.value)}
+                    <select className="form-control-sm" onChange={()=> listTypeChanged(widget.id, listType.value)}
                             ref={node => listType = node}
                             value={widget.listType}>
                         <option value="unordered">Unordered list</option>
@@ -23,7 +23,7 @@ const List = ({preview,nameChanged,listTypeChanged,listItemChanged,widget}) => {
                     </select>
                 </div>
                 <div>
-                    <input onChange={() => nameChanged(widget.id, inputNameElem.value)}
+                    <input className="form-control" onChange={() => nameChanged(widget.id, inputNameElem.value)}
                            value={widget.name}
                            ref={node => inputNameElem = node} placeholder="Widget Name"/>
                 </div>

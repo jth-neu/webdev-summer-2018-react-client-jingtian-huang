@@ -9,20 +9,26 @@ const Heading = ({preview,nameChanged,headingSizeChanged,textChanged,widget}) =>
     return (
         <div>
             <div hidden={preview}>
-                <input onChange={()=> textChanged(widget.id, inputTextElem.value)}
+                <div className="input-group">
+                <input className="form-control" onChange={()=> textChanged(widget.id, inputTextElem.value)}
                        ref={node => inputTextElem = node}
                        value={widget.text}
                        placeholder="Heading Text"/>
-                <select onChange={()=> headingSizeChanged(widget.id, selectHeadingSize.value)}
+                </div>
+                <div>
+                <select className="form-control" onChange={()=> headingSizeChanged(widget.id, selectHeadingSize.value)}
                         ref={node => selectHeadingSize = node}
                         value={widget.size}>
                     <option value='1'>Heading 1</option>
                     <option value='2'>Heading 2</option>
                     <option value='3'>Heading 3</option>
                 </select>
-                <input onChange={() => nameChanged(widget.id, inputNameElem.value)}
+                </div>
+                <div>
+                <input className="form-control" onChange={() => nameChanged(widget.id, inputNameElem.value)}
                        value={widget.name}
                        ref={node => inputNameElem = node} placeholder="Widget Name"/>
+                </div>
                 <h3>Preview</h3>
             </div>
             {widget.size == 1 && <h1>{widget.text}</h1>}

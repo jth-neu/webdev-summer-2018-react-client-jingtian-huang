@@ -12,8 +12,8 @@ class WidgetList extends Component {
         return(
             <div className="container">
                 <div className="row float-right">
-                    <button hidden={this.props.previewMode} onClick={this.props.save}>Save</button>
-                    <button onClick={this.props.preview}>Preview</button>
+                    <button className='btn btn-success' hidden={this.props.previewMode} onClick={this.props.save}>Save</button>
+                    <button className='btn btn-outline-primary' onClick={this.props.preview}>Preview</button>
                 </div>
                 <div>
                     <ul>
@@ -26,7 +26,7 @@ class WidgetList extends Component {
                         </div>
                     </ul>
                 </div>
-                <button className='float-right' onClick={this.props.addWidget}>Add Widget</button>
+                <button className='float-right btn btn-danger' onClick={this.props.addWidget}><i className="fa fa-plus"/></button>
             </div>
         )
     }
