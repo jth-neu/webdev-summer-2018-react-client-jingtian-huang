@@ -4,6 +4,7 @@ import HeadingContainer from './HeadingWidget'
 import ParagraphContainer from "./ParagraphWidget";
 import ImageContainer from "./ImageWidget";
 import LinkContainer from "./LinkWidget";
+import ListContainer from "./ListWidget";
 
 const Widget = ({widget, dispatch,preview}) => {
     let selectElement;
@@ -35,21 +36,13 @@ const Widget = ({widget, dispatch,preview}) => {
             <div>
                 {widget.widgetType==='Heading' &&  <HeadingContainer widget={widget}/>}
                 {widget.widgetType==='Paragraph' && <ParagraphContainer widget={widget}/>}
-                {widget.widgetType==='List' && <List/>}
+                {widget.widgetType==='List' && <ListContainer widget={widget}/>}
                 {widget.widgetType==='Link' && <LinkContainer widget={widget}/>}
                 {widget.widgetType==='Image' && <ImageContainer widget={widget}/>}
             </div>
         </li>
     )
 };
-
-const List = () => (
-    <h2>List</h2>
-)
-const Image = () => (
-    <h2>Image</h2>
-)
-
 
 
 const WidgetContainer = connect(state => ({

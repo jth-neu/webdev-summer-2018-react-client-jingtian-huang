@@ -55,3 +55,10 @@ export const linkChanged = (dispatch, widgetId, newLink) => (
         id: widgetId,
         href: newLink})
 );
+
+export const listTypeChanged = (dispatch, widgetId, newType) => (
+    dispatch({
+        type: constants.LIST_TYPE_CHANGED,
+        id: widgetId,
+        listType: newType})
+);
