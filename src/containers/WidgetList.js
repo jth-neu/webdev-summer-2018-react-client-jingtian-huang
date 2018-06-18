@@ -26,14 +26,12 @@ class WidgetList extends Component {
     }
 
     saveWidgetsToLesson() {
-        console.log(this.state.lessonId)
         this.props.save(this.state.lessonId)
     }
 
     render() {
         return(
             <div className="container" hidden={this.props.lessonId === ''}>
-                <h1>lessonID: {this.props.lessonId}</h1>
                 <div className="row float-right" >
                     <button className='btn btn-success' hidden={this.props.previewMode} onClick={this.saveWidgetsToLesson}>Save</button>
                     <button className='btn btn-outline-primary' onClick={this.props.preview }>Preview</button>
