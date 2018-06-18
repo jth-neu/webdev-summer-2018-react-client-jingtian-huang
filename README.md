@@ -1,3 +1,12 @@
+The middle tier of this application can be found at : https://github.com/jth-neu/webdev-summer-2018-java-server-jingtian-huang
+
+
+The online version of this application: https://course-manager-react-jthneu.herokuapp.com/courses
+
+
+
+-------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
