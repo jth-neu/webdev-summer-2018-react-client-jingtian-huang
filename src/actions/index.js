@@ -1,7 +1,10 @@
 import * as constants from "../constants/index"
 
+const APP_URL_HEROKU = 'https://webdev-summer2018-jthuang.herokuapp.com';
+const APP_URL_LOCAL = 'http://localhost:8080';
+
 export const findAllWidgets = dispatch => {
-    fetch('http://localhost:8080/api/widget')
+    fetch(APP_URL_HEROKU + '/api/widget')
         .then(response => (response.json()))
         .then(widgets => dispatch({
             type: constants.FIND_ALL_WIDGETS,
@@ -9,7 +12,7 @@ export const findAllWidgets = dispatch => {
 };
 
 export const findAllWidgetsForLesson = (dispatch,lessonId) => {
-    fetch('http://localhost:8080/api/lesson/'+lessonId+"/widget")
+    fetch(APP_URL_HEROKU+ '/api/lesson/'+lessonId+"/widget")
         .then(response => (response.json()))
         .then(widgets => dispatch({
             type: constants.FIND_ALL_WIDGETS_FOR_LESSON,
