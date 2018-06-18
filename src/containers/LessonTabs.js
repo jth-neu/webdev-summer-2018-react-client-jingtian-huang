@@ -41,7 +41,7 @@ export default class LessonTabs
                 </ul>
             </div>
             <div>
-                <WidgetListContainer/>
+                <WidgetListContainer  lessonId={this.state.lessonId}/>
             </div>
         </div>
     );}
@@ -54,15 +54,15 @@ export default class LessonTabs
                            key={lesson.id}
                            lesson={lesson}
                            remove={this.deleteLesson.bind(this)}
-                           onClick={this.clickHandler.bind(this, idx)}
+                           onClick={this.clickHandler.bind(this, idx, lesson.id)}
                            isSelected={is_selected}/>)},
                  this)
 
         return lessons;
     }
 
-    clickHandler(idx) {
-        this.setState({selectedItem: idx});
+    clickHandler(idx, lessonId) {
+        this.setState({selectedItem: idx, lessonId: lessonId});
     }
 
     findAllLessonsForModule(courseId,moduleId) {

@@ -8,6 +8,14 @@ export const findAllWidgets = dispatch => {
             widgets: widgets }))
 };
 
+export const findAllWidgetsForLesson = (dispatch,lessonId) => {
+    fetch('http://localhost:8080/api/lesson/'+lessonId+"/widget")
+        .then(response => (response.json()))
+        .then(widgets => dispatch({
+            type: constants.FIND_ALL_WIDGETS_FOR_LESSON,
+            widgets: widgets }))
+}
+
 export const addWidget = dispatch => (
     dispatch({type: constants.ADD_WIDGET})
 );

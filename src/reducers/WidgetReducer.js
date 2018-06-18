@@ -4,7 +4,6 @@ export const widgetReducer = (state= {widgets: [], preview:false}, action) => {
     switch (action.type) {
 
         case constants.MOVE_WIDGET_UP:
-            console.log(action.widgetOrder)
             newState = Object.assign({}, state);
             newState.widgets = moveWidgetUp(action.id, action.widgetOrder, newState.widgets);
             newState.widgets.sort(orderComparator)
@@ -116,6 +115,11 @@ export const widgetReducer = (state= {widgets: [], preview:false}, action) => {
             return {
                 widgets: action.widgets
             };
+
+        case constants.FIND_ALL_WIDGETS_FOR_LESSON:
+            newState = Object.assign({}, state)
+            newState.widgets = action.widgets
+            return newState
 
         case 'ADD_WIDGET' :
             return {
